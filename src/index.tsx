@@ -6,10 +6,10 @@ import "./index.module.scss";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
 
-// if (process.env.NODE_ENV === "development") {
-//   const { worker } = require("./mocks/browser");
-//   worker.start();
-// }
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
 
 declare module "@mui/styles/defaultTheme" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
