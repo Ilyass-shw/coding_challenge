@@ -14,13 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands";
+// import "./commands";
 
 beforeEach(() => {
 
   // setup request intercepts
 
-  cy.intercept("GET", "http://localhost:3000/api/startups?*", (req) => {
+  cy.intercept("GET", "http://localhost:3000/api/startups", (req) => {
     req.reply({
       statusCode: 200, // default
       fixture: "startups.json",

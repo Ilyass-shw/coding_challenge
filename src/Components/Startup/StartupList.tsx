@@ -1,6 +1,7 @@
 import { Fragment, ReactElement, useEffect, useState } from "react";
 import { StartupHttpService } from "../../Http/Startup/Startup.http.service";
 import { Startup } from "../../Types/Startup";
+import StartupCard from "./StartupCard";
 
 export default function StartupList(): ReactElement {
   const [startups, setStartups] = useState<Startup[]>([]);
@@ -15,7 +16,17 @@ export default function StartupList(): ReactElement {
         console.log(e);
       }
     })();
-  }, []);
-
-  return <Fragment></Fragment>;
+  }, [setStartups]);
+  return (
+    <Fragment>
+      {startups.length === 0 && <p>Loading...</p>}
+      {startups.length > 0 && (
+        <div id="startup-list">
+          {startups.map((item) => (
+            <StartupCard startup={item} key={item.id} />
+          ))}
+        </div>
+      )}
+    </Fragment>
+  );
 }
